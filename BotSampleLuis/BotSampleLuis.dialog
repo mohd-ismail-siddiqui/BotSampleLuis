@@ -1,0 +1,285 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "name": "BotSampleLuis",
+    "description": "",
+    "id": "A79tBe"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnConversationUpdateActivity",
+      "$designer": {
+        "id": "376720"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.Foreach",
+          "$designer": {
+            "id": "518944",
+            "name": "Loop: for each item"
+          },
+          "itemsProperty": "turn.Activity.membersAdded",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "641773",
+                "name": "Branch: if/else"
+              },
+              "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "859266",
+                    "name": "Send a response"
+                  },
+                  "activity": "${SendActivity_Greeting()}"
+                },
+                {
+                  "$kind": "Microsoft.ChoiceInput",
+                  "$designer": {
+                    "id": "rYTAoe"
+                  },
+                  "defaultLocale": "en-us",
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "prompt": "${ChoiceInput_Prompt_rYTAoe()}",
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "choiceOptions": {
+                    "includeNumbers": true
+                  },
+                  "property": "user.ChooseUsecase",
+                  "style": "heroCard",
+                  "choices": [
+                    "Raise a Travel Request",
+                    "Raise a Travel Claim"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnUnknownIntent",
+      "$designer": {
+        "id": "mb2n1u"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "kMjqz1"
+          },
+          "activity": "${SendActivity_DidNotUnderstand()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "pSAxdt",
+        "name": "RaiseATravelRequest"
+      },
+      "intent": "RaiseATravelRequest",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "DDapc3"
+          },
+          "activity": "${SendActivity_DDapc3()}"
+        },
+        {
+          "$kind": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "MzU0AC"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "prompt": "${ChoiceInput_Prompt_MzU0AC()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "choiceOptions": {
+            "includeNumbers": true
+          },
+          "property": "user.TravelRequest.TravelType",
+          "style": "heroCard",
+          "choices": [
+            "Domestic",
+            "International"
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "bvWzNa",
+        "name": "TravelType"
+      },
+      "intent": "TravelType",
+      "actions": [
+        {
+          "$kind": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "GdX7Mz"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "prompt": "${ChoiceInput_Prompt_GdX7Mz()}",
+          "choiceOptions": {
+            "includeNumbers": true
+          },
+          "property": "user.TravelRequest.TripType",
+          "style": "heroCard",
+          "choices": [
+            "One Way",
+            "Round"
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "wCedGk",
+        "name": "TripType"
+      },
+      "intent": "TripType",
+      "actions": [
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "j495KD"
+          },
+          "condition": "indexOf(toLower(user.TravelRequest.TravelType),\"international\")> -1",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "wXajeY"
+              },
+              "condition": "indexOf(toLower(user.TravelRequest.TripType),\"Round\") > -1",
+              "actions": [
+                {
+                  "$kind": "Microsoft.AttachmentInput",
+                  "$designer": {
+                    "id": "i2dPZ9"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${AttachmentInput_Prompt_i2dPZ9()}",
+                  "property": "user.TravelRequest.FormData",
+                  "value": {
+                    "contentType": "JSON"
+                  },
+                  "outputFormat": "=turn.activity.value"
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.AttachmentInput",
+                  "$designer": {
+                    "id": "Aovw2W"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${AttachmentInput_Prompt_Aovw2W()}",
+                  "property": "user.TravelRequest.FormData",
+                  "value": {
+                    "contentType": "JSON"
+                  }
+                }
+              ]
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "AVfj6z"
+              },
+              "condition": "indexOf(toLower(user.TravelRequest.TripType),\"Round\") > -1",
+              "actions": [
+                {
+                  "$kind": "Microsoft.AttachmentInput",
+                  "$designer": {
+                    "id": "jQtZtL"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${AttachmentInput_Prompt_jQtZtL()}",
+                  "property": "user.TravelRequest.FormData",
+                  "value": {
+                    "contentType": "JSON"
+                  }
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.AttachmentInput",
+                  "$designer": {
+                    "id": "RUKlBZ"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${AttachmentInput_Prompt_RUKlBZ()}",
+                  "property": "user.TravelRequest.FormData"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "FYDUsV"
+          },
+          "activity": "${SendActivity_FYDUsV()}"
+        }
+      ]
+    }
+  ],
+  "generator": "BotSampleLuis.lg",
+  "id": "BotSampleLuis",
+  "recognizer": "BotSampleLuis.lu.qna"
+}

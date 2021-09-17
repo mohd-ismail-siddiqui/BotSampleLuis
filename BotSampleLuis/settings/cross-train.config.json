@@ -1,0 +1,10 @@
+{
+  "BotSampleLuis.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "RaiseATravelRequest": "",
+      "TravelType": "",
+      "TripType": ""
+    }
+  }
+}

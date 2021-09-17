@@ -1,0 +1,21 @@
+
+# RaiseATravelRequest
+- Raise a Travel Request
+- Travel Request
+
+# TravelType
+- Domestic
+- International
+
+@ list TravelTypes =
+	- Domestic :
+	- International :
+
+
+# TripType
+- One Way
+- Round
+
+@ list TripTypes =
+	- One Way:
+	- Round:

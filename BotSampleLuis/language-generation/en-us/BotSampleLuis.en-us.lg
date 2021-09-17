@@ -1,0 +1,308 @@
+[import](common.lg)
+
+# SendActivity_Greeting()
+[Activity
+    Text = ${SendActivity_Greeting_text()}
+]
+
+# SendActivity_Greeting_text()
+- Welcome to your bot.
+
+# SendActivity_DidNotUnderstand()
+[Activity
+    Text = ${SendActivity_DidNotUnderstand_text()}
+]
+
+# SendActivity_DidNotUnderstand_text()
+- Sorry, I didn't get that.
+# ChoiceInput_Prompt_rYTAoe()
+[Activity
+    Text = ${ChoiceInput_Prompt_rYTAoe_text()}
+]
+
+# ChoiceInput_Prompt_rYTAoe_text()
+- I amy help you to -
+# ChoiceInput_Prompt_MzU0AC()
+[Activity
+    Text = ${ChoiceInput_Prompt_MzU0AC_text()}
+]
+
+# ChoiceInput_Prompt_MzU0AC_text()
+- Please select -
+# SendActivity_DDapc3()
+[Activity
+    Text = ${SendActivity_DDapc3_text()}
+]
+
+# SendActivity_DDapc3_text()
+- Sure, I will help you with that.
+# ChoiceInput_Prompt_GdX7Mz()
+[Activity
+    Text = ${ChoiceInput_Prompt_GdX7Mz_text()}
+]
+
+# ChoiceInput_Prompt_GdX7Mz_text()
+- Please Select -
+# AttachmentInput_Prompt_i2dPZ9()
+[Activity
+    Attachments = ${json(AttachmentInput_Prompt_i2dPZ9_attachment_urR6om())}
+]
+
+# AttachmentInput_Prompt_i2dPZ9_attachment_urR6om()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "speak": "Please let me know the destination country.",
+    "body": [
+		{
+            "type": "TextBlock",
+            "text": "Which country you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "Country",
+            "id": "Country"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Which city you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "City",
+            "id": "City"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Travel Date:",
+            "fontType": "Default",
+            "size": "Small",
+            "weight": "Bolder",
+            "color": "Dark"
+        },
+        {
+            "type": "Input.Date",
+            "spacing": "None",
+            "id": "TravelDate"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Return Date:",
+            "fontType": "Default",
+            "color": "Dark",
+            "size": "Small",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Input.Date",
+            "id": "ReturnDate",
+            "spacing": "None"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "requiredInputs": [
+            "City","TravelDate","ReturnDate"
+             ],
+            "data": {
+                "FormName": "DomesticRoundTripForm",
+                "Language": "en"
+            }
+        }
+    ]
+}
+```
+# AttachmentInput_Prompt_Aovw2W()
+[Activity
+    Attachments = ${json(AttachmentInput_Prompt_Aovw2W_attachment_dM7CFR())}
+]
+
+# AttachmentInput_Prompt_Aovw2W_attachment_dM7CFR()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "speak": "Please let me know the destination country.",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Which country you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "Country",
+            "id": "Country"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Which city you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "City",
+            "id": "City"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Travel Date:",
+            "fontType": "Default",
+            "size": "Small",
+            "weight": "Bolder",
+            "color": "Dark"
+        },
+        {
+            "type": "Input.Date",
+            "spacing": "None",
+            "id": "TravelDate"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "data": {
+                "FormName": "InternationalOneWayTripForm",
+                "Language": "en"
+            }
+        }
+    ]
+}
+```
+# AttachmentInput_Prompt_jQtZtL()
+[Activity
+    Attachments = ${json(AttachmentInput_Prompt_jQtZtL_attachment_6YYfAu())}
+]
+
+# AttachmentInput_Prompt_jQtZtL_attachment_6YYfAu()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "speak": "Please let me know the destination city of your travel.",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Which city you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "City",
+            "id": "City"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Travel Date:",
+            "fontType": "Default",
+            "size": "Small",
+            "weight": "Bolder",
+            "color": "Dark"
+        },
+        {
+            "type": "Input.Date",
+            "spacing": "None",
+            "id": "TravelDate"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Return Date:",
+            "fontType": "Default",
+            "color": "Dark",
+            "size": "Small",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Input.Date",
+            "id": "ReturnDate",
+            "spacing": "None"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "requiredInputs": [
+            "City","TravelDate","ReturnDate"
+             ],
+            "data": {
+                "FormName": "DomesticRoundTripForm",
+                "Language": "en"
+            }
+        }
+    ]
+}
+```
+# AttachmentInput_Prompt_RUKlBZ()
+[Activity
+    Attachments = ${json(AttachmentInput_Prompt_RUKlBZ_attachment_N73S4o())}
+]
+
+# AttachmentInput_Prompt_RUKlBZ_attachment_N73S4o()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "speak": "Please let me know the destination city of your travel.",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Which city you want to travel?",
+            "wrap": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "City",
+            "id": "City"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Travel Date:",
+            "fontType": "Default",
+            "size": "Small",
+            "weight": "Bolder",
+            "color": "Dark"
+        },
+        {
+            "type": "Input.Date",
+            "spacing": "None",
+            "id": "TravelDate"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "data": {
+                "FormName": "DomesticOneWayTripForm",
+                "Language": "en"
+            }
+        }
+    ]
+}
+```
+# SendActivity_FYDUsV()
+[Activity
+    Text = ${SendActivity_FYDUsV_text()}
+]
+
+# SendActivity_FYDUsV_text()
+- ${user.TravelRequest}
